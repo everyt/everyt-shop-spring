@@ -1,11 +1,9 @@
 user
 
-create table `USER_TB` (
-	`USER_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '유저정보',
-    `USER_EMAIL` varchar(255) NOT NULL COMMENT '이메일',
-    `USER_PASSWORD` varchar(255) NOT NULL COMMENT '비밀번호',
-    `USER_NICKNAME` varchar(255) NOT NULL COMMENT '닉네임',
-    `APPEND_DATE` datetime DEFAULT NULL COMMENT '생성날짜',
-    `UPDATE_DATE` datetime DEFAULT NULL COMMENT '수정날짜',
-    PRIMARY KEY (`USER_ID`)
+create table USER_TB (
+	USER_ID int(11) NOT NULL AUTO_INCREMENT COMMENT '유저PID',
+    USER_EMAIL varchar(255) NOT NULL COMMENT '이메일',
+    USER_NICKNAME varchar(255) NOT NULL COMMENT '닉네임',
+    USER_PASSWORD varchar(255) NOT NULL COMMENT '비밀번호',
+    PRIMARY KEY (USER_ID)
 );
