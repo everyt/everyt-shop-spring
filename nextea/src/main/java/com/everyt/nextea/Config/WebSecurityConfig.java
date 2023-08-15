@@ -47,8 +47,9 @@ public class WebSecurityConfig {
 			// Http 요청에 대한 권한 설정
 			.authorizeHttpRequests(requests -> requests
 			.requestMatchers(mvcMatcherBuilder.pattern("/api/csrf"),
-					         mvcMatcherBuilder.pattern("/api/user/**")).permitAll()
-            .requestMatchers(PathRequest.toH2Console()).permitAll()
+					         mvcMatcherBuilder.pattern("/api/user/**"),
+					         mvcMatcherBuilder.pattern("/hello"),
+					         PathRequest.toH2Console()).permitAll()
             .anyRequest().authenticated()
 			);
 		
