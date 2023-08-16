@@ -3,12 +3,14 @@ package com.everyt.nextea.Dto;
 import com.everyt.nextea.Entity.Authority;
 import com.everyt.nextea.Entity.Member;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class MemberDto {
 
     private long id;
