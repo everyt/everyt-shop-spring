@@ -1,0 +1,2 @@
+INSERT INTO user_tb (_ID, _EMAIL, _NICKNAME, _PASSWORD, _AUTHORITY)
+VALUES (1, 'admin', 'admin', '1234', 'ROLE_ADMIN');

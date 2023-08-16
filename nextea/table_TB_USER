@@ -1,0 +1,9 @@
+user
+
+create table USER_TB (
+	USER_ID int(11) NOT NULL AUTO_INCREMENT COMMENT '유저PID',
+    USER_EMAIL varchar(255) NOT NULL COMMENT '이메일',
+    USER_NICKNAME varchar(255) NOT NULL COMMENT '닉네임',
+    USER_PASSWORD varchar(255) NOT NULL COMMENT '비밀번호',
+    PRIMARY KEY (USER_ID)
+);
