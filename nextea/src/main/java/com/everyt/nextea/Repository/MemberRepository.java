@@ -10,7 +10,7 @@ import com.everyt.nextea.Entity.Member;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long>{
-    Optional<Member> findByEmail(String email);
-    Optional<Member> findByEmailAndPassword(String email, String password);
+    Optional<Member> findByemail(String email);
+    Optional<Member> findByemailAndpassword(String email, String password);
     boolean existsByEmail(String email);
 }

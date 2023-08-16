@@ -25,13 +25,13 @@ public class MemberService {
 	}
 	
 	public MemberDto findByEmail(String email) {
-		Member member = memberRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("해당 멤버가 없습니다. email: "+email));
+		Member member = memberRepository.findByemail(email).orElseThrow(() -> new IllegalArgumentException("해당 멤버가 없습니다. email: "+email));
 		return new MemberDto(member);
 	}
 	
 	public Long update(MemberDto memberDto) {
 		String email = memberDto.getEmail();
-		Member member = memberRepository.findByEmail(email).orElseThrow(()-> new IllegalArgumentException("해당 멤버가 없습니다. email: "+email));
+		Member member = memberRepository.findByemail(email).orElseThrow(()-> new IllegalArgumentException("해당 멤버가 없습니다. email: "+email));
 		member.update(memberDto.getEmail(), memberDto.getNickname(), memberDto.getPassword(), memberDto.getAuthority());
 		return member.getId();
 	}
@@ -41,7 +41,7 @@ public class MemberService {
 	}
 	
 	public Long findByEmailAndPassword(String email, String password) {
-		Member member = memberRepository.findByEmailAndPassword(email, password).orElseThrow(() -> new IllegalArgumentException("로그인 시도가 실패했습니다. email: "+email));
+		Member member = memberRepository.findByemailAndpassword(email, password).orElseThrow(() -> new IllegalArgumentException("로그인 시도가 실패했습니다. email: "+email));
 		return member.getId();
 	}
 }
