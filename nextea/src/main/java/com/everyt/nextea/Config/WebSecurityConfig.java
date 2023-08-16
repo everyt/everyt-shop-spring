@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
@@ -49,7 +50,13 @@ public class WebSecurityConfig {
 					         mvcMatcherBuilder.pattern("/api/user/**"),
 					         mvcMatcherBuilder.pattern("/hello"),
 					         PathRequest.toH2Console()).permitAll()
-            .anyRequest().authenticated()
+            .anyRequest().authenticated())
+			
+            // 세션을 사용하지 않기 때문에 STATELESS로 설정
+            .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+			// enable h2-console
+			.headers(headers -> headers.frameOptions(options -> options.sameOrigin())
 			);
 		
 		return http.build();
