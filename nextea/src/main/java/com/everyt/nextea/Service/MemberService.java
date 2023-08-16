@@ -29,14 +29,19 @@ public class MemberService {
 		return new MemberDto(member);
 	}
 	
-	public String update(MemberDto memberDto) {
+	public Long update(MemberDto memberDto) {
 		String email = memberDto.getEmail();
-		Member member = memberRepository.findByEmail(email).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. email: "+email));
+		Member member = memberRepository.findByEmail(email).orElseThrow(()-> new IllegalArgumentException("해당 멤버가 없습니다. email: "+email));
 		member.update(memberDto.getEmail(), memberDto.getNickname(), memberDto.getPassword(), memberDto.getAuthority());
-		return email;
+		return member.getId();
 	}
 	
-	public String save(MemberDto memberDto) {
-		return memberRepository.save(memberDto.toEntity()).getEmail();
+	public Long save(MemberDto memberDto) {
+		return memberRepository.save(memberDto.toEntity()).getId();
+	}
+	
+	public Long findByEmailAndPassword(String email, String password) {
+		Member member = memberRepository.findByEmailAndPassword(email, password).orElseThrow(() -> new IllegalArgumentException("로그인 시도가 실패했습니다. email: "+email));
+		return member.getId();
 	}
 }

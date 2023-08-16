@@ -27,18 +27,23 @@ public class MemberController {
 	}
 	
 	@GetMapping("/user/{id}")
-	public ResponseEntity<MemberDto> findById(@PathVariable String email) {
+	public ResponseEntity<MemberDto> findByEmail(@PathVariable("email") String email) {
 		return ResponseEntity.ok().body(memberService.findByEmail(email));
 	}
 	
 	@PutMapping("/user/{id}")
-	public ResponseEntity<String> update(@RequestBody MemberDto memberDto) {
+	public ResponseEntity<Long> update(@RequestBody MemberDto memberDto) {
 		return ResponseEntity.ok().body(memberService.update(memberDto));
 	}
 	
 	@PostMapping("/user/sign-up")
-	public ResponseEntity<String> save(@RequestBody MemberDto memberDto) {
+	public ResponseEntity<Long> save(@RequestBody MemberDto memberDto) {
 		return ResponseEntity.ok().body(memberService.save(memberDto));
+	}
+	
+	@PostMapping("/user/login")
+	public ResponseEntity<Long> findByEmailAndPassword(@PathVariable("email") String email, @PathVariable("password") String password) {
+		return ResponseEntity.ok().body(memberService.findByEmailAndPassword(email, password));
 	}
 
 }
