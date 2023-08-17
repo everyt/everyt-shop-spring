@@ -31,5 +31,7 @@ public class UserService {
 		return userVo.toUser().getId();
 	}
 	public Long Login(UserVo.Request.Login userVo) {
+		User user = userRepository.findByEmailAndPassword(userVo.getEmail(), userVo.getPassword()).orElseThrow(() -> new IllegalArgumentException("isNotExist: "+userVo.getEmail()));
+		return user.getId();
 	}
 }
