@@ -1,4 +1,4 @@
-package com.everyt.nextea.Config;
+package com.everyt.nextea.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

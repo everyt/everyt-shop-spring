@@ -1,25 +1,22 @@
 server:
-  # PORT 설정
   url: http://localhost
   port: 8080
- 
+logging:
+  level:
+    com.everyt: debug
+jwt:
+  secret: ZXZlcnl0LW5leHRlYS1wcmV0dHktbXVjaC1iYXNlLTY0LWNvZGUtYmVmb3JlLWVuY29kZS1qd3Qtc2VjcmV0LWNvZGUtc2VjcmV0LWZpbmFsbHk=
+  expiration: 3600
 spring:
-    
   h2:
     console:
       enabled: true
       path: /h2-console
-      
   datasource:
-    # url: jdbc:mysql://localhost:3306/nextea_db
-    # username: nextea
-    # password: 1234Qwer
-    # driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:h2:mem:testdb
     diver-class-name: org.h2.Driver
     username: sa
     password:
-  
   jpa:
     defer-datasource-initialization: true
     hivernate:
@@ -30,10 +27,3 @@ spring:
         show_sql: true
         format_sql: true
         use_sql_comments: true
-
-logging:
-  level:
-    com.everyt: debug
-    
-jwt:
-  secret: ZXZlcnl0LW5leHRlYS1wcmV0dHktbXVjaC1iYXNlLTY0LWNvZGUtYmVmb3JlLWVuY29kZS1qd3Qtc2VjcmV0LWNvZGUtc2VjcmV0LWZpbmFsbHk=

@@ -1,4 +1,4 @@
-package com.everyt.nextea.Config;
+package com.everyt.nextea.config;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -46,9 +46,8 @@ public class WebSecurityConfig {
 			
 			// Http 요청에 대한 권한 설정
 			.authorizeHttpRequests(requests -> requests
-			.requestMatchers(mvcMatcherBuilder.pattern("/api/v1/csrf"),
+			.requestMatchers(mvcMatcherBuilder.pattern("/api/v1/item/**"),
 					         mvcMatcherBuilder.pattern("/api/v1/user/**"),
-					         mvcMatcherBuilder.pattern("/hello"),
 					         PathRequest.toH2Console()).permitAll()
             .anyRequest().authenticated())
 			
