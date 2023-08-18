@@ -1,3 +1,5 @@
+# netstat -ano | findstr 8080
+# taskkill /F /pid [PID]
 server:
   url: http://localhost
   port: 8080
@@ -5,8 +7,9 @@ logging:
   level:
     com.everyt: debug
 jwt:
-  secret: ZXZlcnl0LW5leHRlYS1wcmV0dHktbXVjaC1iYXNlLTY0LWNvZGUtYmVmb3JlLWVuY29kZS1qd3Qtc2VjcmV0LWNvZGUtc2VjcmV0LWZpbmFsbHk=
-  expiration: 3600
+  header: Authorization
+  secret: ZXZlcnl0LW5leHRlYS1wcmV0dHktbXVjaC1iYXNlLTY0LWNvZGUtYmVmb3JlLWVuY29kZS1qd3Qtc2VjcmV0LWNvZGUtc2VjcmV0LWZpbmFsbHk
+  expirationSeconds: 86400
 spring:
   h2:
     console:

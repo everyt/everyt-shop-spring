@@ -1,6 +1,6 @@
 package com.everyt.nextea.user;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
@@ -30,30 +30,29 @@ import lombok.Setter;
 public class User {
 	@Id
 	@Column(name = "USER_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
 	@Column(name = "EMAIL", length = 50, unique = true)
 	@Nonnull
 	private String email;
 	
-	@Column(name = "NICKNAME")
+	@Column(name = "NICKNAME", length = 50, unique = false)
 	@Nonnull
 	private String nickname;
 	
-	@Column(name = "PASSWORD")
+	@Column(name = "PASSWORD", length = 50, unique = false)
 	@Nonnull
 	private String password;
 	
-	@Column(name = "ENABLED")
+	@Column(name = "ACTIVATED", length = 1, unique = false)
 	@Nonnull
-	private Boolean enabled;
+	private Boolean activated;
 	
-	@Nonnull
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(
 			name = "USER_ROLE",
 			joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")},
-			inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID")})
-	private List<Role> roles;
+			inverseJoinColumns = {@JoinColumn(name = "ROLE_TYPE", referencedColumnName = "ROLE_TYPE")})
+	private Set<Role> roles;
 }
